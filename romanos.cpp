@@ -20,14 +20,16 @@ bool checar(std::string n) {
     return juri;
 }
 int romanos_para_decimal(std::string num_romano) {
-    if (checar(num_romano) == true) {
-        if (num_romano[0] == 'I') {
-            return 1;
-        } else if (num_romano[0] == 'V') {
-            return 5;
+    char apoio[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+    int apoio1[] = {1, 5, 10, 50, 100, 500, 1000};
+    int resp = -1;
+    if (checar(num_romano)==true) {
+        for (int i = 0; i < 7; i+=1) {
+            if (apoio[i] == num_romano[0]) {
+                resp = apoio1[i];
+                break;
+            }
         }
-    } else if (checar(num_romano) == false) {
-        return -1;
     }
-    return 0;
+    return resp;
 }
