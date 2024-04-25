@@ -18,11 +18,21 @@ TEST_CASE( "Numeros romanos - algarismos únicos", "[romanos]" ) {
 
     REQUIRE( romanos_para_decimal("M") == 1000);
 }
+TEST_CASE( "Numeros romanos - algarismos multiplos", "[romanos]") {
+    REQUIRE( romanos_para_decimal("III") == 3 );
 
+    REQUIRE( romanos_para_decimal("II") == 2);
 
+    REQUIRE( romanos_para_decimal("XX") == 20);
 
+    REQUIRE( romanos_para_decimal("XV") == 15);
 
+    REQUIRE( romanos_para_decimal("CL") == 150);
 
+    REQUIRE( romanos_para_decimal("MD") == 1500);
+
+    REQUIRE( romanos_para_decimal("MDCLXIII") == 1663);
+}
 TEST_CASE( "Numeros romanos - algarismos inválidos", "[romanos]" ) {
     REQUIRE( romanos_para_decimal("G") == -1 );
 
