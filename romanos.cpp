@@ -48,7 +48,6 @@ bool checar(std::string n) {
                 juri = false;
                 break;
             }
-
         } else if (cont > 1) {
             if (anterior1 == 'V' || anterior1 == 'L' || anterior1 == 'D') {
                 juri = false;
@@ -59,6 +58,8 @@ bool checar(std::string n) {
     }
     return juri;
 }
+
+
 int romanos_para_decimal(std::string num_romano) {
     int resp = 0;
     int tam = num_romano.length();
@@ -113,18 +114,30 @@ int romanos_para_decimal(std::string num_romano) {
                         juri = false;
                         break;
                     }
-                    if (atual == 1 && (anterior == 1000 || anterior == 500 || anterior == 100 || anterior == 50)) {
+                    if (atual == 1) {
+                        if (anterior == 1000 || anterior == 500) {
+                            juri = false;
+                            break;
+                        }
+                        if (anterior == 100 || anterior == 50) {
+                            juri = false;
+                            break;
+                        }
+                    }
+                    if ((anterior - atual == atual) || atual == 5) {
                         juri = false;
                         break;
                     }
-                    if ((anterior - atual == atual) || atual == 5 || atual == 50 || atual == 500) {
+                    if (atual == 50 || atual == 500) {
                         juri = false;
                         break;
                     } else {
                         resp -= atual;
                     }
                 } else if (tam >= 3 && u == 0) {
-                    if (valor_num(num_romano[u]) <= valor_num(num_romano[u+2])) {
+                    int m2 = valor_num(num_romano[u]);
+                    int m3 = valor_num(num_romano[u+2]);
+                    if (m2 <= m3) {
                         juri = false;
                         break;
                     }
@@ -132,7 +145,11 @@ int romanos_para_decimal(std::string num_romano) {
                         juri = false;
                         break;
                     }
-                    if ((anterior - atual == atual) || atual == 5 || atual == 50 || atual == 500) {
+                    if ((anterior - atual == atual) || atual == 5) {
+                        juri = false;
+                        break;
+                    }
+                    if (atual == 50 || atual == 500) {
                         juri = false;
                         break;
                     } else {
@@ -153,5 +170,4 @@ int romanos_para_decimal(std::string num_romano) {
         return -1;
     }
 }
-
 

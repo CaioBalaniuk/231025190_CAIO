@@ -65,6 +65,7 @@ TEST_CASE( "Numeros romanos - algarismos multiplos com subtração válida", "[roma
     REQUIRE( romanos_para_decimal("CD") == 400);
 
     REQUIRE( romanos_para_decimal("CM") == 900);
+
 }
 
 TEST_CASE( "Numeros romanos - algarismos inválidos", "[romanos]" ) {
@@ -161,6 +162,10 @@ TEST_CASE( "Numeros romanos - subtração inválida", "[romanos]") {
     REQUIRE( romanos_para_decimal("ICX") == -1);
 
     REQUIRE( romanos_para_decimal("VXI") == -1);
+
+    REQUIRE( romanos_para_decimal("CCM") == -1);
+
+    REQUIRE( romanos_para_decimal("LCM") == -1);
 }
 
 
